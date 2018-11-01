@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <style>
+    .container {
+      border-radius: 20px;
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .clock {
+      border: 1px solid #333;
+      border-radius: 20px;
+      width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+      background: #4da6ff;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pomodoro Timer</title>
+</head>
+<body>
+  <div id="combo">
+    Please select the number of clocks from the drop down that you want to use and click Submit.
+    <select name="Number of clocks" id="clocks">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <br><br>
+      <input type="button" align="center" value="Submit" onclick="myFunction()">
+      <div id="container" class="container">
+        <audio src="alarm.wav" id="audio" autostart="false"></audio>
+      </div>
+      <div id="anotherClock" align="center" style="margin-top:10px" hidden="true">
+        <button id="btnAddClock" type="button" onclick="addClock()">Add an other clock</button>
+      </div>
+      <script src="index.js"></script>
+      <script type="text/javascript">
+        let id = 0;
+        myFunction = () => {
+          combo.hidden=true;
+          let appendString = document.createElement("div");
+          anotherClock.hidden=false;
+          var totalClocks = document.getElementById('clocks').value;
+          for(i=1;i<=totalClocks;i++)
+          {
+            appendString=null;
+            appendString=document.createElement("div");
+            id=i;
+            appendString.innerHTML ='<div id="clock_'+id+'" class="clock">  <div id="message_' + id + '"></div><div id="timer_' + id + '"><span id="minutes_' + id + '">25</span><span id="middle_' + id + '">:</span><span id="seconds_' + id + '">00</span></div><div id="buttons_' + id + '"><button id="work_' + id + '" onclick = "startTimer(id)">Start Work</button><button id="stop_' + id + '" onclick = "stopTimer(id)">Stop Work</button> <button id="shortBreak_' + id + '" onclick = "restartTimer(id)">Resume Work</button><div> <div id="secondarybuttons_' + id + '" </div><button id="reset_' + id + '" onclick = "resetTimer(id)">Reset</button><button id="longBreak_' + id + '" onclick = "longBreak(id)">Long Break</button><button id="shortBreak_' + id + '" onclick = "shortBreak(id)">Short Break</button><button id="close_' + id + '" onclick = "hideClock(id)">Close</button></div></br></div>';
+            let div = document.getElementById('container');
+            //div.innerHTML = div.innerHTML + appendString;
+            document.createElement("div");
+            div.appendChild(appendString);
+
+            //$("#container").append(appendString);
+            initElements(id);
+
+          }
+
+        }
+        addClock = () => {
+          id++;
+          appendString = null;
+          appendString = document.createElement("div");
+          appendString.innerHTML = '<div id="clock_'+id+'" class="clock"> <div id="message_' + id + '"></div><div id="timer_' + id + '"><span id="minutes_' + id + '">25</span><span id="middle_' + id + '">:</span><span id="seconds_' + id + '">00</span></div><div id="buttons_' + id + '"><button id="work_' + id + '" onclick = "startTimer(id)">Start Work</button><button id="stop_' + id + '" onclick = "stopTimer(id)">Stop Work</button> <button id="shortBreak_' + id + '" onclick = "restartTimer(id)">Resume Work</button><div> <div id="secondarybuttons_' + id + '" </div><button id="reset_' + id + '" onclick = "resetTimer(id)">Reset</button><button id="longBreak_' + id + '" onclick = "longBreak(id)">Long Break</button><button id="shortBreak_' + id + '" onclick = "shortBreak(id)">Short Break</button><button id="close_' + id + '" onclick = "hideClock(id)">Close</button></div></br></div>';
+          let div = document.getElementById('container');
+          //div.innerHTML = div.innerHTML + appendString;
+          document.createElement("div");
+          div.appendChild(appendString);
+          initElements(id);
+        }
+      </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "pomodoro",
+  "version": "1.0.0",
+  "main": "bootstrap.js",
+  "repository": "https://github.com/onelimitless/electron-pomodoro.git",
+  "author": "Gaetan <bgloup@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node_modules/electron/dist/Electron.app/Contents/MacOS/Electron ."
+  },
+  "devDependencies": {
+    "electron": "^3.0.7"
+  }
+}
